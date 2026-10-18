@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumen — сохрани качество видео в TikTok</title>
+<meta name="description" content="Бесплатный оптимизатор видео для авторов: резкость, шумоподавление, цвет и экспорт 1080×1920 с высоким битрейтом. Обработка прямо в браузере.">
+<meta name="theme-color" content="#0b0a1f">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div class="blobs"><i></i><i></i><i></i></div>
+<header class="top glass"><a class="brand" href="#top"><span class="logo"></span>Lumen</a>
+<nav><a href="#tool">Оптимизатор</a><a href="#guides">Гайды</a><a href="#check">Чек-лист</a><a href="#faq">FAQ</a></nav></header>
+
+<main id="top">
+<section class="hero">
+ <span class="pill">Lumen 1.0 · работает в браузере</span>
+ <h1>Покажи качество,<br><em>которое ты создал.</em></h1>
+ <p>Твоё видео выходит в TikTok чётким: правильный формат, чистая картинка и высокий битрейт — чтобы платформа пережимала его меньше.</p>
+ <div class="row c"><a class="btn pri" href="#tool">Улучшить видео</a><a class="btn" href="#guides">Читать гайды</a></div>
+ <div class="stats glass"><div><b id="st1">0</b><span>видео обработано тобой</span></div><div><b id="st2">0 МБ</b><span>общий объём</span></div><div><b>0</b><span>загрузок на сервер</span></div></div>
+</section>
+
+<section class="sec" id="why"><h2>Что делает Lumen</h2><div class="cards">
+ <article class="glass"><i>◐</i><h3>Авто-уровни</h3><p>Анализ яркости кадра: подтягиваем тени и света, чтобы картинка не «тухла».</p></article>
+ <article class="glass"><i>✦</i><h3>Резкость по контурам</h3><p>Усиливаются только настоящие границы, шум не растёт.</p></article>
+ <article class="glass"><i>≋</i><h3>Шумоподавление</h3><p>Сглаживаем шум на ровных местах — кодеку остаётся меньше мусора.</p></article>
+ <article class="glass"><i>▦</i><h3>Зерно против блоков</h3><p>Микрозерно прячет полосы и квадраты на небе и градиентах.</p></article>
+ <article class="glass"><i>▯</i><h3>Форматы 9:16 и 16:9</h3><p>1080×1920, 1080×1080 и 1920×1080. Режим «Вписать» делает размытый фон.</p></article>
+ <article class="glass"><i>🔒</i><h3>Приватно</h3><p>Файл не покидает устройство. Никаких аккаунтов и очередей.</p></article>
+</div></section>
+
+<section class="sec" id="compare"><h2>Было и стало</h2><p class="lead">Схематичная демонстрация. Потяни ползунок: слева типичная картинка после сильного сжатия, справа — подготовленная.</p>
+ <div class="cmp glass" id="cmp"><div class="a"></div><div class="b" id="cmpB"></div><span class="tag l">Без обработки</span><span class="tag r">Lumen</span><input type="range" id="cmpR" min="0" max="100" value="50" aria-label="Сравнение"></div>
+</section>
+
+<section class="sec" id="tool"><h2>Оптимизатор</h2>
+<label id="drop" class="glass" for="file" tabindex="0"><div><div class="ic">🎬</div><b>Перетащи видео сюда</b><span>или нажми для выбора · MP4, MOV, WebM</span></div><input id="file" type="file" accept="video/*,.mp4,.mov,.m4v,.webm" hidden></label>
+<div id="ws" class="grid hide">
+ <div class="col">
+  <section class="glass"><div class="stage"><canvas id="cv" width="1080" height="1920"></canvas></div>
+   <div class="row sp"><div class="row"><button class="btn" id="play">▶ Просмотр</button><button class="btn" id="orig">Оригинал (удерж.)</button></div><button class="btn" id="swap">Другое видео</button></div>
+   <p class="meta" id="info"></p></section>
+  <section class="glass hide" id="res"><h3>Готово</h3><video id="rv" controls playsinline></video><p class="meta" id="rinfo"></p><a class="btn pri" id="save" href="#">Скачать видео</a></section>
+ </div>
+ <div class="col">
+  <section class="glass"><h3>Платформа</h3><div class="row" id="presets"></div><div class="row mt" id="fitrow"></div></section>
+  <section class="glass"><h3>Алгоритмы</h3><label class="tg"><input type="checkbox" id="auto" checked> Авто-уровни и экспозиция</label><div id="sliders"></div><p class="meta" id="lvinfo"></p></section>
+  <section class="glass"><h3>Экспорт</h3>
+   <select id="br"><option value="12">Стандарт — 12 Мбит/с</option><option value="16" selected>Высокое — 16 Мбит/с</option><option value="24">Очень высокое — 24 Мбит/с</option><option value="35">Максимум — 35 Мбит/с</option></select>
+   <p class="meta">Обработка идёт в реальном времени. Не сворачивай вкладку.</p>
+   <button class="btn pri" id="go">Улучшить видео</button><button class="btn hide" id="stop">Отмена</button>
+   <div class="bar hide" id="bar"><i></i></div><p class="meta hide" id="pt"></p></section>
+ </div>
+</div>
+<video id="v" playsinline preload="auto" hidden></video>
+</section>
+
+<section class="sec" id="guides"><h2>Гайды для авторов</h2><div class="acc">
+<details class="glass"><summary>Почему видео в TikTok размыто</summary><p>TikTok перекодирует каждый ролик в несколько вариантов под разные скорости интернета. Если исходник тёмный, шумный, с градиентами или низкого разрешения, кодеку не хватает битов, и появляются мыло и квадраты. Чем чище и ровнее исходник, тем меньше видимых потерь.</p></details>
+<details class="glass"><summary>Лучшие настройки экспорта</summary><p>Разрешение 1080×1920 (9:16), 30 или 60 к/с, H.264 (MP4), битрейт 12–25 Мбит/с, звук AAC 192 кбит/с, цветовое пространство Rec.709. Не загружай уже сжатые копии из мессенджеров — берись за оригинал из редактора.</p></details>
+<details class="glass"><summary>Как включить загрузку в HD</summary><p>В приложении TikTok: Профиль → Меню → Настройки и конфиденциальность → Экономия трафика и Загрузка в HD (название может отличаться). Включи загрузку в высоком качестве, иначе приложение само снизит битрейт при публикации.</p></details>
+<details class="glass"><summary>60 к/с и 4K: стоит ли</summary><p>60 к/с даёт плавность в динамичных сценах (игры, спорт, танцы). 4K платформа всё равно уменьшает, но чёткий 1080p из 4K-источника обычно выглядит лучше обычного 1080p. Сначала проверь, что телефон не греется и запись не рвётся.</p></details>
+<details class="glass"><summary>Свет, шум и цвет до монтажа</summary><p>Снимай при хорошем свете: шум в тени — главный враг сжатия. Избегай цифрового зума, фиксируй экспозицию и баланс белого, не перешарпливай в редакторе: двойная резкость даёт ореолы.</p></details>
+</div></section>
+
+<section class="sec" id="check"><h2>Чек-лист перед публикацией</h2><div class="glass chk" id="chk">
+<label><input type="checkbox" data-k="1"> Формат 9:16, 1080×1920</label>
+<label><input type="checkbox" data-k="2"> Экспорт из оригинала, не из мессенджера</label>
+<label><input type="checkbox" data-k="3"> H.264 MP4, битрейт от 12 Мбит/с</label>
+<label><input type="checkbox" data-k="4"> Прогнал через Lumen и сравнил с оригиналом</label>
+<label><input type="checkbox" data-k="5"> Ключевое — в безопасной зоне (без перекрытия интерфейсом)</label>
+<label><input type="checkbox" data-k="6"> В TikTok включена загрузка в HD</label>
+<label><input type="checkbox" data-k="7"> Wi-Fi и заряд телефона на время загрузки</label>
+<div class="bar"><i id="chkBar"></i></div><p class="meta" id="chkT"></p></div></section>
+
+<section class="sec" id="faq"><h2>Вопросы и ответы</h2><div class="acc">
+<details class="glass"><summary>Это перекодирует моё видео?</summary><p>Да. Lumen обрабатывает кадры и записывает новый файл, поэтому качество зависит от битрейта экспорта. Это не «копирование потоков без потерь».</p></details>
+<details class="glass"><summary>Гарантирует ли это больше просмотров?</summary><p>Нет. Мы улучшаем только картинку; охваты зависят от контента.</p></details>
+<details class="glass"><summary>Файл уходит на сервер?</summary><p>Нет, вся обработка идёт в браузере на твоём устройстве.</p></details>
+<details class="glass"><summary>Почему файл стал больше?</summary><p>Высокий битрейт даёт платформе больше данных. Так и задумано.</p></details>
+<details class="glass"><summary>Какие браузеры подходят?</summary><p>Chrome, Edge и Safari 16+ (нужны WebGL и MediaRecorder).</p></details>
+</div></section>
+</main>
+<footer><div class="glass"><b>Lumen</b> · Инструменты качества видео для авторов<br><span class="meta">Не связано с TikTok. Названия платформ принадлежат их владельцам.</span></div></footer>
+<div id="toast" class="glass"></div>
+<script src="script.js"></script>
+</body></html>
